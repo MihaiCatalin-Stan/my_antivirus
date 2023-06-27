@@ -1,0 +1,46 @@
+#315CAb_StanMihai-Catalin
+
+# Mod de functionalitate
+	Programul are la baza 3 functii
+1. read_database - citeste dintr-un fisier toate domain-urile malitioase si le
+memoreaza intr-un tablou bidimensional de caractere.
+2. task1 - citeste dintr-un fisier o multitudine de url-uri pe care le verifica
+conform euristicilor primite
+3. task2 - citeste dintr-un fisier o multitudine de date despre traficul unui
+url si le verifica conform euristicilor
+
+# read_database
+	Functia de read_database este apelata in main si primeste ca parametrii
+tabloul bidimensional 'database' in care se vor memora domain-urile primite din
+fisier. Aceasta va returna dimensiunea bazei de date (numarul de domain-uri
+citite).
+
+# task1
+	Functia task1 este apelata in main si primeste ca parametrii tabloul
+modificat la functia anterioara si dimensiunea sa. Se deschid fisierul de .in
+si fisierul de .out. Se citesc url-urile pana la finalul fisierului si apoi se
+verifica pe rand urmatoarele:
+1. Daca url-ul citit se termina in secventa '.exe'
+2. Daca domain-ul url-ului citit se afla printre cele cunoscute ca fiind
+malitioase, adica daca se afla in baza de date citita anterior
+3. Daca minim 10% din caracterele domain-ului sunt cifre (nu se aplica atunci
+cand nu exista nicio cifra, iar numele domain-ului are mai putin de 10
+caractere)
+	In final, daca url-ul a trecut toate cele 3 teste atunci acesta va avea
+variabila de verificare 'ok' egala cu 1, si se va afisa valoarea 0 in fisierul
+.out si se va trece la urmatorul url, in caz contrar se va fi afisat deja
+valoarea 1 in fisier si se va trece la urmatorul url.
+
+# task2
+	Functia task2 este apelata in main si nu primeste niciun parametru. Se
+deschid fisierul de .in si si fisierul de .out. Se citeste prima linie care
+contine ordinea numelor valorilor din fisier, si apoi se incepe citirea
+traficului pe rand. Variabila de verificare ok este initializata cu valoarea 2
+intrucat fiecare input are de trecut 2 teste pentru a fi considerat malitios.
+	Traficul este impartit cu ajutorul functiei de strtok, cu ajutorul
+careia trecem la verificarea secundelor si a milisecundelor din flow_duration.
+In cazul in care input-ul nu a trecut primul test, se verifica daca payload-ul
+mediu este diferit de 0.
+	In cazul in care input-ul a trecut macar unul dintre teste atunci se va
+afisa in fisier valoarea 0, iar in caz contrar in timpul verificarii de payload
+mediu se va afisa valoarea 1 in fisier.
